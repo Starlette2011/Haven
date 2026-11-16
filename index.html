@@ -22,6 +22,7 @@
     <a href="#planner">Planner</a>
     <a href="#plan">Family plan</a>
     <a href="#why">Why it matters</a>
+    <button class="btn ghost small" data-demo>▶ Demo</button>
   </nav>
 </header>
 
@@ -32,6 +33,7 @@
     <p class="lead">Tell Haven who's in your home and what could hit your area. Get a personalized supply list with exact quantities, plus a family plan you can print — in under a minute.</p>
     <div class="cta">
       <a class="btn primary" href="#planner">Build my plan</a>
+      <button class="btn ghost" data-demo>▶ Watch the auto demo</button>
       <span class="note">Free · No account · Your data never leaves your device</span>
     </div>
   </section>
@@ -98,9 +100,28 @@
         <div class="actions">
           <button class="btn ghost" id="copy">Copy list</button>
           <button class="btn ghost" id="print">Print</button>
+          <button class="btn ghost" id="share">Share link</button>
+          <button class="btn ghost" id="ics">Add reminder</button>
+          <button class="btn ghost" id="speak">Read aloud</button>
           <button class="btn ghost" id="reset">Reset</button>
         </div>
       </aside>
+    </div>
+
+    <div class="card runway" id="runway">
+      <div>
+        <h3>Your runway</h3>
+        <p class="muted">How many days could you last with what you already own?</p>
+      </div>
+      <div class="rin">
+        <label>Water on hand (gallons)<input type="number" id="haveWater" min="0" placeholder="0"></label>
+        <label>Meals on hand<input type="number" id="haveMeals" min="0" placeholder="0"></label>
+      </div>
+      <div class="rout">
+        <b id="runDays">0 days</b>
+        <div class="bar"><i id="runBar"></i></div>
+        <p id="runMsg" class="muted"></p>
+      </div>
     </div>
 
     <div class="section-head">
@@ -156,6 +177,12 @@
 <footer>
   <p>Built for IceHacks 2026 · Fraunces &amp; Inter fonts · AI-assisted development (Claude) — see README</p>
 </footer>
+
+<div id="demoBar" hidden role="status" aria-live="polite">
+  <span id="demoStep"></span>
+  <p id="demoCap"></p>
+  <button class="btn ghost small" id="demoStop">Stop demo ✕</button>
+</div>
 
 <script src="app.js"></script>
 </body>
