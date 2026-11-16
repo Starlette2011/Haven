@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haven — Your 72-Hour Readiness Plan</title>
+<meta name="description" content="Haven builds a personalized emergency supply list and family plan in under a minute. Free, private, and works offline.">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top"><span class="dot"></span>Haven</a>
+  <nav>
+    <a href="#planner">Planner</a>
+    <a href="#plan">Family plan</a>
+    <a href="#why">Why it matters</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="eyebrow">72-hour readiness planner</p>
+    <h1>When the lights go out,<br><em>be the one who's ready.</em></h1>
+    <p class="lead">Tell Haven who's in your home and what could hit your area. Get a personalized supply list with exact quantities, plus a family plan you can print — in under a minute.</p>
+    <div class="cta">
+      <a class="btn primary" href="#planner">Build my plan</a>
+      <span class="note">Free · No account · Your data never leaves your device</span>
+    </div>
+  </section>
+
+  <section id="planner" class="planner">
+    <div class="section-head">
+      <h2>1. Your household</h2>
+      <p>Everything updates live as you change it.</p>
+    </div>
+
+    <div class="grid">
+      <form id="form" class="card form" autocomplete="off">
+        <div class="counters">
+          <label>Adults<input type="number" name="adults" min="0" max="20"></label>
+          <label>Seniors (65+)<input type="number" name="seniors" min="0" max="20"></label>
+          <label>Children<input type="number" name="kids" min="0" max="20"></label>
+          <label>Infants<input type="number" name="infants" min="0" max="10"></label>
+          <label>Dogs<input type="number" name="dogs" min="0" max="10"></label>
+          <label>Cats<input type="number" name="cats" min="0" max="10"></label>
+        </div>
+
+        <div class="field">
+          <div class="row"><span>Days to prepare for</span><output id="daysOut">3</output></div>
+          <input type="range" name="days" min="3" max="14" aria-label="Days to prepare for">
+          <small>Official guidance starts at 3 days. Two weeks is the gold standard.</small>
+        </div>
+
+        <fieldset>
+          <legend>What could happen where you live?</legend>
+          <div class="chips" data-group="hazards">
+            <label><input type="checkbox" value="outage"><span>⚡ Power outage</span></label>
+            <label><input type="checkbox" value="storm"><span>❄️ Winter storm</span></label>
+            <label><input type="checkbox" value="hurricane"><span>🌀 Hurricane / flood</span></label>
+            <label><input type="checkbox" value="quake"><span>🌎 Earthquake</span></label>
+            <label><input type="checkbox" value="fire"><span>🔥 Wildfire</span></label>
+            <label><input type="checkbox" value="heat"><span>☀️ Extreme heat</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anyone with special needs?</legend>
+          <div class="chips" data-group="needs">
+            <label><input type="checkbox" value="meds"><span>💊 Daily medication</span></label>
+            <label><input type="checkbox" value="device"><span>🔌 Medical device needing power</span></label>
+            <label><input type="checkbox" value="mobility"><span>🦽 Mobility aid</span></label>
+            <label><input type="checkbox" value="allergy"><span>🥜 Food allergies</span></label>
+            <label><input type="checkbox" value="glasses"><span>👓 Glasses / hearing aids</span></label>
+          </div>
+        </fieldset>
+      </form>
+
+      <aside class="card summary" aria-live="polite">
+        <div class="ring" id="ring"><span id="pct">0%</span></div>
+        <h3>Readiness</h3>
+        <p id="count" class="muted">0 of 0 items ready</p>
+        <div class="stats">
+          <div><b id="statWater">–</b><span>gallons of water</span></div>
+          <div><b id="statMeals">–</b><span>meals of food</span></div>
+        </div>
+        <div class="next">
+          <h4>Do these first</h4>
+          <ol id="next"></ol>
+        </div>
+        <div class="actions">
+          <button class="btn ghost" id="copy">Copy list</button>
+          <button class="btn ghost" id="print">Print</button>
+          <button class="btn ghost" id="reset">Reset</button>
+        </div>
+      </aside>
+    </div>
+
+    <div class="section-head">
+      <h2>2. Your checklist</h2>
+      <p>Tap items as you gather them. Progress saves automatically.</p>
+    </div>
+    <div id="list" class="lists"></div>
+  </section>
+
+  <section id="plan" class="planner">
+    <div class="section-head">
+      <h2>3. Your family plan</h2>
+      <p>Supplies are half the battle. Decide these now, while you're calm.</p>
+    </div>
+    <form id="planForm" class="card plan" autocomplete="off">
+      <label>Out-of-area contact<small>Texts and calls often work when local lines are jammed.</small>
+        <input name="contact" placeholder="Name and phone number"></label>
+      <label>Meeting spot near home<small>Somewhere you can reach on foot if you must leave fast.</small>
+        <input name="meet1" placeholder="e.g. the park across the street"></label>
+      <label>Meeting spot outside your neighborhood
+        <input name="meet2" placeholder="e.g. library on 5th Ave"></label>
+      <label>Evacuation route &amp; where you'd go
+        <textarea name="route" rows="3" placeholder="Primary route, backup route, destination"></textarea></label>
+      <label>Medical info &amp; allergies
+        <textarea name="medical" rows="3" placeholder="Medications, doses, doctors, allergies"></textarea></label>
+      <label>Utilities
+        <textarea name="utilities" rows="3" placeholder="Where the water, gas, and electric shutoffs are"></textarea></label>
+    </form>
+  </section>
+
+  <section id="why" class="why">
+    <div class="section-head">
+      <h2>Why this matters</h2>
+    </div>
+    <div class="cols">
+      <article class="card">
+        <h3>Most households aren't ready.</h3>
+        <p>Disasters are getting more frequent and more costly, yet surveys consistently find that a large share of people have no emergency kit and no written plan. The first 72 hours are when help is hardest to reach.</p>
+      </article>
+      <article class="card">
+        <h3>Checklists are generic.</h3>
+        <p>"Store water" doesn't tell a family of five with an infant and a dog how much. Haven turns standard guidance into exact numbers for your household and your local risks.</p>
+      </article>
+      <article class="card">
+        <h3>Privacy by design.</h3>
+        <p>No sign-ups, no servers, no tracking. Everything is stored in your browser, and Haven works offline once loaded — exactly when you'll need it.</p>
+      </article>
+    </div>
+    <p class="fine">Haven follows widely published guidance from FEMA and the Red Cross (for example, about one gallon of water per person per day). It is a planning aid, not a substitute for local emergency instructions. In an emergency, call your local emergency number.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Built for IceHacks 2026 · Fraunces &amp; Inter fonts · AI-assisted development (Claude) — see README</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
