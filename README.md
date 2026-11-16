@@ -1,6 +1,6 @@
 # Haven — 72-Hour Readiness Planner
 
-**Live site:** `https://starlette2011.github.io/Haven/#planner`
+**Live site:** `https://starlette2011.github.io/Haven/`
 
 Haven turns generic emergency checklists into a personalized plan. Enter your household (adults, children, infants, seniors, pets), how many days to prepare for, local hazards, and special needs. Haven computes exact quantities (water, meals, formula, diapers, batteries, masks), builds a checklist with progress tracking, and gives you a fill-in family plan you can print.
 
