@@ -1,4 +1,4 @@
-const CACHE = 'haven-v1';
+const CACHE = 'haven-v2';
 const SHELL = ['./', 'index.html', 'style.css', 'app.js', 'manifest.json', 'icon.svg'];
 
 self.addEventListener('install', e => {
